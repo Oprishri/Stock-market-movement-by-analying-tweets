@@ -1,0 +1,20 @@
+install.packages("twitteR", "RCurl", "RJSONIO", "stringr") #install these packages
+
+#call library
+
+library(twitteR)
+library(RCurl)
+library(RJSONIO)
+library(stringr)
+
+consumerKey="*******************"
+consumerSecret="************************"
+accessToken="*****************************"
+accessTokenSecret="***********************"
+setup_twitter_oauth (consumerKey, consumerSecret, accessToken, accessTokenSecret) 
+
+tweets <- searchTwitter("tcs",n=5000,lang='en',since = "2019-05-05", until = "2019-05-25")# tcs= TATA CONSULTANCY SERVICES, i used tcs tweets.
+
+tweets.df <- twListToDF(tweets)
+
+write.csv("C://User//Desktop//tweets.csv")
